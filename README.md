@@ -13,7 +13,7 @@ This project started as an idea to hack an ikea lamp and transform it to use wit
 ## Usage
 
 
-<img src="UI.PNG" alt="User Interface" width="40%" align = "right" />
+<img src="./UI.PNG" alt="User Interface" width="40%" align = "right" />
 
 Download the project and move .proto file to your smartphone (**recommended**) or tablet.
 

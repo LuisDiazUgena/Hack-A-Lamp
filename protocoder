@@ -1,7 +1,7 @@
 /*
-*	
-*	Description: Control RGB Leds with Arduino and Protocoder over bluetooth 
-*	by Luis Diaz - DrMaker.es
+*   
+*   Description: Control RGB Leds with Arduino and Protocoder over bluetooth 
+*   by Luis Diaz - DrMaker.es
 *   contact info: luis@drmaker.es    
 *
 */
@@ -9,7 +9,8 @@
 ui.toolbar.title("Hack-A-Lamp ");
 ui.toolbar.bgColor(55, 155, 155, 255);
 ui.toolbar.show(true);
-ui.screenMode("portrait");
+ui.screenMode("fullscreen");
+ui.screenOrientation("portrait");
 
 var btClient;
 var string, hexString;
@@ -46,7 +47,7 @@ var sliderRed = ui.addSlider(0, 3*h, w, 20, 0, 255).onChange(function(val) {
     red = Math.floor(val);
     string = red +","+ green +","+ blue;
     colourDec.setText(string);
-    hexString = red.toString(16) +","+ green.toString(16) +","+ blue.toString(16);
+    hexString = red.toString(16) + green.toString(16) + blue.toString(16);
     colourHex.setText(hexString);
     console.log(string);
 });
@@ -57,7 +58,7 @@ var sliderGreen = ui.addSlider(0, 5*h, w, 20, 0, 255).onChange(function(val) {
     green = Math.floor(val);
     string = red +","+ green +","+ blue;
     colourDec.setText(string);
-    hexString = red.toString(16) +","+ green.toString(16) +","+ blue.toString(16);
+    hexString = red.toString(16) + green.toString(16) + blue.toString(16);
     colourHex.setText(hexString);
     console.log(string);
 });
@@ -90,6 +91,7 @@ var btnSend = ui.addButton("Send", 0, 10*h, w, h).onClick(function() {
         ui.jump(btnSend);
         console.log("String = "+string);
         btClient.send(string +"\n");
+        ui.toast("Sended!");
     }else{
         ui.toast("¡Not connected!");
     }

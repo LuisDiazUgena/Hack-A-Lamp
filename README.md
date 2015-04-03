@@ -26,5 +26,12 @@ You **must** first pair your BT board or module to your device with bluetooth se
 
 On protocoder interface click on Connect to Bluetooth and choose your board, wait until both BTs are connected and move the sliders, then click on Send to change the colour.
 
+### References
+
+[HTC One MockUp by Zohan1980 on devianart](http://zohan1980.deviantart.com/art/Htc-One-Flat-PSD-448852499)
+
+[Protocoder by Victor Diaz](http://www.protocoder.org)
+
+[BQ ZUM BT-328](http://www.bq.com/gb/products/zum.html) 
 
 

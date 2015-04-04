@@ -6,7 +6,9 @@ Uses [protocoder](http://www.protocoder.org) (by Victor Diaz) and a BQ ZUM BT-32
 
 Protocoder handles the interface, bluetooth (or BT) communication and colour chosser.
 
-[BQ ZUM BT-328](http://www.bq.com/gb/products/zum.html) handles BT communication and drives RGB LEDs. (it got a BT module integrated on the board and many other great things)
+Also uses Mit App Inventor, so you can choose whatever app you prefer. App made with app inventor has some problems (check out below)
+
+[BQ ZUM BT-328](http://www.bq.com/gb/products/zum.html) handles BT communication and drives RGB LEDs (It got a BT module integrated on the board and many other great things).
 
 This project started as an idea to hack an ikea lamp and transform it to use with RGB LEDs.
 

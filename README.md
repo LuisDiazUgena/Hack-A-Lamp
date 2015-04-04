@@ -26,7 +26,8 @@ Install protocoder apk on your device and then, with a file explorer, open *proj
 You **must** first pair your BT board or module to your device with bluetooth settings.
 
 On protocoder interface click on Connect to Bluetooth and choose your board, wait until both BTs are connected and move the sliders, then click on Send to change the colour.
-## App Inventor
+
+### App Inventor
 
 I've made an app with [Mit App Inventor](http://appinventor.mit.edu/explore/), that have the same functionality as protocoder app, but it have some issues that  You can install the apk provided to use this project on your smartphone. Also you can download *.aia* project inside App Inventor folder and import into your App Inventors project to hack, modify, learn or whatever you want to do with it.
 

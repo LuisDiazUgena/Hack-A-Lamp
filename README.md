@@ -39,7 +39,7 @@ The app made with Mit App Inventor, sometimes, doesn't send info over bluetooth.
 
 This projects is under CC-BY-SA license.
 
--><img src="cc-by-sa.png" alt="License" width="40%" align = "center" /><-
+<p align="center"> <img src="cc-by-sa.png" alt="License" width="40%" align = "center" /></p>
 
 ### References
 

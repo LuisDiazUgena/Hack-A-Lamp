@@ -1,10 +1,10 @@
 # Hack-A-Lamp
 
-This project can modify RGB LED colour over bluetooth.
+This project can modify RGB LED color over bluetooth.
 
 Uses [protocoder](http://www.protocoder.org) (by Victor Diaz) and a BQ ZUM BT-328.
 
-Protocoder handles the interface, bluetooth (or BT) communication and colour chosser.
+Protocoder handles the interface, bluetooth (or BT) communication and color chosser.
 
 Also uses Mit App Inventor, so you can choose whatever app you prefer. App made with app inventor has some problems (check out below)
 
@@ -12,8 +12,9 @@ Also uses Mit App Inventor, so you can choose whatever app you prefer. App made 
 
 This project started as an idea to hack an ikea lamp and transform it to use with RGB LEDs.
 
-## Usage
+**Please check out [UPDATES](##UPDATES) below**
 
+## Usage
 
 <img src="UI.png" alt="User Interface" width="40%" align = "right" />
 
@@ -27,11 +28,19 @@ Install protocoder apk on your device and then, with a file explorer, open *proj
 
 You **must** first pair your BT board or module to your device with bluetooth settings.
 
-On protocoder interface click on Connect to Bluetooth and choose your board, wait until both BTs are connected and move the sliders, then click on Send to change the colour.
+On protocoder interface click on Connect to Bluetooth and choose your board, wait until both BTs are connected and move the sliders, then click on Send to change the color.
+
+**Auto send feature**: Use this is you want Protocoder send data color as you modify it. Using this feature provides a almost real time experience.
+
+**On/Off switch**: When it's turned on, the color is set to white. When it's turned off, the color is set to black.
 
 ### App Inventor
 
 I've made an app with [Mit App Inventor](http://appinventor.mit.edu/explore/), that have the same functionality as protocoder app, but it have some issues that  You can install the apk provided to use this project on your smartphone. Also you can download *.aia* project inside App Inventor folder and import into your App Inventors project to hack, modify, learn or whatever you want to do with it.
+
+##UPDATES
+
+**5-April-2015**: Added random color button, on/off switch and autoSend.
 
 ### Issues
 

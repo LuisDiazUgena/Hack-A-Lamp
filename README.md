@@ -46,6 +46,7 @@ I've made an app with [Mit App Inventor](http://appinventor.mit.edu/explore/), t
 
 1. Added random color button, on/off switch and autoSend.
 2. Added high speed mode.
+3. Fixed autosend bug.
 
 ### Issues
 

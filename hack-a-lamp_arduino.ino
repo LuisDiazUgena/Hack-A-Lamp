@@ -21,10 +21,12 @@ void loop() {
     
     int red = 0, green = 0, blue = 0;
 
+    delayLed = Serial.parseInt();
+
     red = Serial.parseInt();
-    // vuelve a buscar.
+    
     green = Serial.parseInt();
-    // vuelve a buscar:
+    
     blue = Serial.parseInt();
     
     if (Serial.read() == '\n'){
@@ -35,9 +37,9 @@ void loop() {
       blue = constrain(blue, 0, 255);
 
       //Modify each led colour
-      fade(redPin, red, red_old);
-      fade(greenPin, green, green_old);
-      fade(bluePin, blue, blue_old);
+      fade(redPin, red, red_old,delayLed);
+      fade(greenPin, green, green_old,delayLed);
+      fade(bluePin, blue, blue_old,delayLed);
       
       
       //Store colour data
@@ -48,17 +50,17 @@ void loop() {
   }
 }
 
-void fade(int pin, int newValue, int aktValue) {
+void fade(int pin, int newValue, int aktValue, int delayValue) {
 
     if (newValue > aktValue) {
       for (int i = aktValue; i <= newValue; i++) {
         analogWrite(pin, i);
-        delay(delayLed);
+        delay(delayValue);
       }
     } else if (newValue < aktValue) {
       for (int i = aktValue; i >= newValue; i--) {
         analogWrite(pin, i);
-        delay(delayLed);
+        delay(delayValue);
       }
     }
   }

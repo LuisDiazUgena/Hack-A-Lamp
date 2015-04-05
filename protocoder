@@ -13,8 +13,8 @@ ui.toolbar.show(true);
 ui.screenOrientation("portrait");
 
 var btClient;
-var string, hexString;
-var btStatus;
+var string="0,0,0", hexString="000";
+var btStatus = false;
 var margin = 10;
 var w = ui.screenWidth - 2*margin;
 var h = 150;
@@ -54,7 +54,7 @@ var sliderRed = ui.addSlider(margin, 3*h, w, 20, 0, 255).onChange(function(val) 
     hexString = red.toString(16) + green.toString(16) + blue.toString(16);
     hexString = hexString.toUpperCase();
     colourHex.setText(hexString);
-    console.log(string);
+    autoSend();
 });
 
 var green = 0;
@@ -66,7 +66,7 @@ var sliderGreen = ui.addSlider(margin, 5*h, w, 20, 0, 255).onChange(function(val
     hexString = red.toString(16) + green.toString(16) + blue.toString(16);
     hexString = hexString.toUpperCase();
     colourHex.setText(hexString);
-    console.log(string);
+    autoSend();
 });
 
 var blue = 0;
@@ -78,19 +78,80 @@ var sliderBlue = ui.addSlider(margin, 7*h, w, 20, 0, 255).onChange(function(val)
     hexString = red.toString(16)+green.toString(16)+blue.toString(16);
     hexString = hexString.toUpperCase();
     colourHex.setText(hexString);
-    console.log(string);
+    autoSend();
 });
 
-var canvas = ui.addCanvas(margin, 8*h, w, h);
+var canvas = ui.addCanvas(margin, 7.9*h, w, h-margin);
 canvas.loopDraw(35, function() {
     canvas.fill(red,green,blue,10);
     canvas.rect(0, 0, ui.screenWidth, 500);
 });
 
 var colourDecLabel = ui.addText("Dec = ", margin, 9*h, 2*w, h);
-var colourDec = ui.addText(h, 9*h, 2*w, h);
+var colourDec = ui.addText(string,h, 9*h, 2*w, h);
 var colorHexLabel = ui.addText("Hex = ", margin, 9.5*h, 2*w, h);
-var colourHex = ui.addText(h, 9.5*h, 2*w, h);
+var colourHex = ui.addText(hexString,h, 9.5*h, 2*w, h);
+
+var IO = ui.addCheckbox("I/O",w-2.5*h,9*h,h,h, false).onChange(function(val) { 
+    if (val === true){
+        sliderRed.setValue(255);
+        sliderGreen.setValue(255);
+        sliderBlue.setValue(255);
+        string = red +","+ green +","+ blue;
+        colourDec.setText(string);
+        hexString = red.toString(16)+green.toString(16)+blue.toString(16);
+        hexString = hexString.toUpperCase();
+        colourHex.setText(hexString);
+    }else{
+        sliderRed.setValue(0);
+        sliderGreen.setValue(0);
+        sliderBlue.setValue(0);
+        string = red +","+ green +","+ blue;
+        colourDec.setText(string);
+        hexString = red.toString(16)+green.toString(16)+blue.toString(16);
+        hexString = hexString.toUpperCase();
+        colourHex.setText(hexString);   
+    }
+});
+
+
+var sendFlag;
+var IO = ui.addCheckbox("Send?",w-1.5*h,9*h,2*h,h, false).onChange(function(val) { 
+    sendFlag = val;
+});
+
+
+function autoSend (){
+    if (sendFlag === true && btStatus === true){
+        btClient.send(string +"\n");
+        showToast = true;
+    }else if(btStatus === false){
+        ui.toast("Not Connected");
+        sendFlag = false;
+    }
+}
+
+console.log("w="+ui.screenWidth);
+console.log("h="+ui.screenHeight);
+
+function randomInt(){
+    var int = Math.random()*255;
+    int = Math.floor(int);
+    return int;
+}
+var randomButton = ui.addButton("?",w-3.5*h,9*h,h,h).onClick(function(val) { 
+    red = randomInt();
+    green = randomInt();
+    blue = randomInt();
+    sliderRed.setValue(red);
+    sliderGreen.setValue(green);
+    sliderBlue.setValue(blue);
+    string = red +","+ green +","+ blue;
+    colourDec.setText(string);
+    hexString = red.toString(16)+green.toString(16)+blue.toString(16);
+    hexString = hexString.toUpperCase();
+    colourHex.setText(hexString);   
+}); 
 
 var btnSend = ui.addButton("Send", margin, 10*h, w, h).onClick(function() {
     if (btStatus === true){

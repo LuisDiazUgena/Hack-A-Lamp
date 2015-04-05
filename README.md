@@ -42,7 +42,10 @@ I've made an app with [Mit App Inventor](http://appinventor.mit.edu/explore/), t
 
 ###<a name="updates">Updates</a>
 
-**5-April-2015**: Added random color button, on/off switch and autoSend. Added high speed mode.
+**5-April-2015**: 
+
+1. Added random color button, on/off switch and autoSend.
+2. Added high speed mode.
 
 ### Issues
 

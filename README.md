@@ -12,7 +12,7 @@ Also uses Mit App Inventor, so you can choose whatever app you prefer. App made 
 
 This project started as an idea to hack an ikea lamp and transform it to use with RGB LEDs.
 
-Please check out updates below.
+Please check out [updates](Hack-A-Lamp#UPDATES) below.
 
 
 ## Usage

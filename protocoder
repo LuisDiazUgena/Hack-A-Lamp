@@ -14,7 +14,7 @@ ui.screenOrientation("portrait");
 
 var speed=10;
 var btClient;
-var sendString= speed +",0,0,0",string="0,0,0", hexString="000";
+var sendString= "10,0,0,0",string="0,0,0", hexString="000";
 var btStatus = false;
 var margin = 10;
 var w = ui.screenWidth - 2*margin;
@@ -114,6 +114,7 @@ var IO = ui.addCheckbox("I/O",w-2.5*h,9*h,h,h, false).onChange(function(val) {
         hexString = red.toString(16)+green.toString(16)+blue.toString(16);
         hexString = hexString.toUpperCase();
         colourHex.setText(hexString);
+        autoSend();
     }else{
         sliderRed.setValue(0);
         sliderGreen.setValue(0);
@@ -124,7 +125,9 @@ var IO = ui.addCheckbox("I/O",w-2.5*h,9*h,h,h, false).onChange(function(val) {
         hexString = red.toString(16)+green.toString(16)+blue.toString(16);
         hexString = hexString.toUpperCase();
         colourHex.setText(hexString);   
+        autoSend();
     }
+    
 });
 
 var sendFlag;
@@ -134,7 +137,7 @@ var auto = ui.addCheckbox("Send?",w-1.5*h,9*h,2*h,h, false).onChange(function(va
 
 function autoSend (){
     if (sendFlag === true && btStatus === true){
-        btClient.send(string +"\n");
+        btClient.send(sendString +"\n");
         showToast = true;
     }else if(btStatus === false){
         ui.toast("Not Connected");
@@ -161,12 +164,12 @@ var randomButton = ui.addButton("?",w-h,7.9*h,h,h).onClick(function(val) {
     hexString = red.toString(16)+green.toString(16)+blue.toString(16);
     hexString = hexString.toUpperCase();
     colourHex.setText(hexString);   
+    autoSend();
 }); 
 
 var btnSend = ui.addButton("Send", margin, 10*h, w, h).onClick(function() {
     if (btStatus === true){
         ui.jump(btnSend);
-        console.log("String = "+sendString);
         btClient.send(sendString +"\n");
         ui.toast("Sended!");
     }else{

@@ -12,7 +12,8 @@ Also uses Mit App Inventor, so you can choose whatever app you prefer. App made 
 
 This project started as an idea to hack an ikea lamp and transform it to use with RGB LEDs.
 
-Please check out [updates](Hack-A-Lamp#UPDATES) below.
+
+Please check out <a href="#updates">updates</a> below.
 
 
 ## Usage
@@ -39,7 +40,7 @@ On protocoder interface click on Connect to Bluetooth and choose your board, wai
 
 I've made an app with [Mit App Inventor](http://appinventor.mit.edu/explore/), that have the same functionality as protocoder app, but it have some issues that  You can install the apk provided to use this project on your smartphone. Also you can download *.aia* project inside App Inventor folder and import into your App Inventors project to hack, modify, learn or whatever you want to do with it.
 
-##UPDATES
+###<a name="updates">Updates</a>
 
 **5-April-2015**: Added random color button, on/off switch and autoSend.
 

@@ -53,6 +53,9 @@ I've made an app with [Mit App Inventor](http://appinventor.mit.edu/explore/), t
 The app made with Mit App Inventor takes a long time to send info over bluetooth. 
 
 The app made with Mit App Inventor, sometimes, doesn't send info over bluetooth.
+
+Bad align of random color button.
+
 ### License
 
 This projects is under CC-BY-SA license.

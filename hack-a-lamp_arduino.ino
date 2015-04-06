@@ -1,7 +1,3 @@
-/*#include "MLED_SMD_STRIP_MEGA.h"
- // library for leds strip
-MLED_SMD_STRIP_MEGA strip = MLED_SMD_STRIP_MEGA();
-*/
 #include "Adafruit_NeoPixel.h"
 #define PIXEL_PIN    6    // Digital IO pin connected to the NeoPixels.
 #define PIXEL_COUNT 16

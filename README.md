@@ -10,8 +10,9 @@ Also uses Mit App Inventor, so you can choose whatever app you prefer. App made 
 
 [BQ ZUM BT-328](http://www.bq.com/gb/products/zum.html) handles BT communication and drives RGB LEDs (It got a BT module integrated on the board and many other great things).
 
-This project started as an idea to hack an ikea lamp and transform it to use with RGB LEDs.
+Also it uses [Neopixel library by Adafruit](https://github.com/adafruit/Adafruit_NeoPixel) to control neopixel leds.
 
+This project started as an idea to hack an ikea lamp and transform it to use with RGB LEDs.
 
 Please check out <a href="#updates">updates</a> below.
 
@@ -75,3 +76,4 @@ This projects is under CC-BY-SA license.
 
 [Mit App Inventor](http://appinventor.mit.edu/explore/)
 
+[Neopixel library by Adafruit](https://github.com/adafruit/Adafruit_NeoPixel)

@@ -12,7 +12,7 @@ ui.toolbar.show(true);
 //ui.screenMode("fullscreen");
 ui.screenOrientation("portrait");
 
-var speed=10;
+var speed=25;
 var btClient;
 var sendString= "10,0,0,0",string="0,0,0", hexString="000";
 var btStatus = false;
@@ -56,7 +56,7 @@ var sliderRed = ui.addSlider(margin, 3*h, w, 20, 0, 255).onChange(function(val) 
     hexString = red.toString(16) + green.toString(16) + blue.toString(16);
     hexString = hexString.toUpperCase();
     colourHex.setText(hexString);
-    autoSend();
+    //autoSend();
 });
 
 var green = 0;
@@ -68,7 +68,7 @@ var sliderGreen = ui.addSlider(margin, 5*h, w, 20, 0, 255).onChange(function(val
     hexString = red.toString(16) + green.toString(16) + blue.toString(16);
     hexString = hexString.toUpperCase();
     colourHex.setText(hexString);
-    autoSend();
+    //autoSend();
 });
 
 var blue = 0;
@@ -80,7 +80,7 @@ var sliderBlue = ui.addSlider(margin, 7*h, w, 20, 0, 255).onChange(function(val)
     hexString = red.toString(16)+green.toString(16)+blue.toString(16);
     hexString = hexString.toUpperCase();
     colourHex.setText(hexString);
-    autoSend();
+    //autoSend();
 });
 
 var canvas = ui.addCanvas(margin, 7.9*h, w-h-margin, h-margin);
@@ -94,12 +94,11 @@ var colourDec = ui.addText(string,h, 9*h, 2*w, h);
 var colorHexLabel = ui.addText("Hex = ", margin, 9.5*h, 2*w, h);
 var colourHex = ui.addText(hexString,h, 9.5*h, 2*w, h);
 
-var speed = 10;
 var speedCheckbox = ui.addCheckbox("High speed?",w-4.5*h,9*h,2*h,h, false).onChange(function(val) { 
     if (val === true){
         speed = 2;
     }else{
-        speed = 10;
+        speed = 25;
     }
 });
 
@@ -139,6 +138,7 @@ function autoSend (){
     if (sendFlag === true && btStatus === true){
         btClient.send(sendString +"\n");
         showToast = true;
+        console.log(sendString);
     }else if(btStatus === false){
         ui.toast("Not Connected");
         sendFlag = false;
@@ -150,7 +150,7 @@ function randomInt(){
     int = Math.floor(int);
     return int;
 }
-//var canvas = ui.addCanvas(margin, 7.9*h, w-h, h-margin);
+
 var randomButton = ui.addButton("?",w-h,7.9*h,h,h).onClick(function(val) { 
     red = randomInt();
     green = randomInt();
@@ -171,6 +171,7 @@ var btnSend = ui.addButton("Send", margin, 10*h, w, h).onClick(function() {
     if (btStatus === true){
         ui.jump(btnSend);
         btClient.send(sendString +"\n");
+        console.log(sendString);
         ui.toast("Sended!");
     }else{
         ui.toast("¡Not connected!");

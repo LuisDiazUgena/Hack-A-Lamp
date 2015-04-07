@@ -26,7 +26,7 @@ void setup() {
 void loop() {
 
   while (Serial.available() > 0) {
-    digitalWrite(13, HIGH);
+    
     int red = 0, green = 0, blue = 0;
 
     delayLed = Serial.parseInt();
@@ -35,7 +35,6 @@ void loop() {
     blue = Serial.parseInt();
 
     if (Serial.read() == '\n') {
-    digitalWrite(13, LOW);
       //For common anode led, use ie: red = 255 - constrain(red, 0, 255);
       red = constrain(red, 0, 255);
       green = constrain(green, 0, 255);
@@ -76,9 +75,9 @@ void fade(int pin, int newValue, int aktValue, int delayValue) {
 
 // Fill the dots one after the other with a color
 void colorWipe(uint32_t c, uint8_t wait) {
-  for(uint16_t i=0; i<strip.numPixels(); i++) {
-      strip.setPixelColor(i, c);
-      strip.show();
-      delay(wait);
+  for (uint16_t i = 0; i < strip.numPixels(); i++) {
+    strip.setPixelColor(i, c);
+    strip.show();
+    delay(wait);
   }
 }

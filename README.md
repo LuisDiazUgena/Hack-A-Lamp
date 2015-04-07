@@ -44,6 +44,7 @@ I've made an app with [Mit App Inventor](http://appinventor.mit.edu/explore/), t
 ###<a name="updates">Updates</a>
 
 **6-April-2015**
+
 1. Added support for neopixel and compatibles.
 
 **5-April-2015**: 

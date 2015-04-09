@@ -45,42 +45,35 @@ var btnDisconnect = ui.addButton("Disconnect",margin,h, w, h).onClick(function()
         ui.toast("Not Connected");
     }
 });
+var red=0,green=0,blue=0;
 
-var red = 0;
-var cardRed = ui.addCard("Red", margin, 2*h, ui.screenWidth - margin , 100); 
-var sliderRed = ui.addSlider(margin, 3*h, w, 20, 0, 255).onChange(function(val) { 
-    red = Math.floor(val);
+function modifySliders(newRed,newGreen,newBlue){
+    red = Math.floor(newRed);
+    green = Math.floor(newGreen);
+    blue = Math.floor(newBlue);
+    
     sendString = speed +","+ red +","+ green +","+ blue;
     string = red +","+ green +","+ blue;
     colourDec.setText(string);
     hexString = red.toString(16) + green.toString(16) + blue.toString(16);
     hexString = hexString.toUpperCase();
     colourHex.setText(hexString);
-    //autoSend();
+    
+}
+
+var redLabel = ui.addText("R",margin,2*h,w,w);
+var sliderRed = ui.addSlider(margin, 2*h, w, 20, 0, 255).onChange(function(val) { 
+    modifySliders(val,blue,green);
 });
 
-var green = 0;
-var cardGreen = ui.addCard("Green", margin, 4*h, ui.screenWidth - margin, 100); 
-var sliderGreen = ui.addSlider(margin, 5*h, w, 20, 0, 255).onChange(function(val) { 
-    green = Math.floor(val);
-    sendString = speed +","+ red +","+ green +","+ blue;
-    string = red +","+ green +","+ blue;
-    hexString = red.toString(16) + green.toString(16) + blue.toString(16);
-    hexString = hexString.toUpperCase();
-    colourHex.setText(hexString);
-    //autoSend();
+var greenLabel = ui.addText("G",margin,3*h,w,w);
+var sliderGreen = ui.addSlider(margin, 3*h, w, 20, 0, 255).onChange(function(val) { 
+    modifySliders(red,val,blue);
 });
 
-var blue = 0;
-var cardBlue = ui.addCard("Blue", margin, 6*h, ui.screenWidth -margin , 100);
-var sliderBlue = ui.addSlider(margin, 7*h, w, 20, 0, 255).onChange(function(val) { 
-    blue = Math.floor(val);
-    sendString = speed +","+ red +","+ green +","+ blue;
-    string = red +","+ green +","+ blue;
-    hexString = red.toString(16)+green.toString(16)+blue.toString(16);
-    hexString = hexString.toUpperCase();
-    colourHex.setText(hexString);
-    //autoSend();
+var blueLabel = ui.addText("B",margin,4*h,w,w);
+var sliderBlue = ui.addSlider(margin, 4*h, w, 20, 0, 255).onChange(function(val) { 
+    modifySliders(red,green,val);
 });
 
 var canvas = ui.addCanvas(margin, 7.9*h, w-h-margin, h-margin);

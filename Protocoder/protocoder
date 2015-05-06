@@ -7,7 +7,11 @@
 */
 
 ui.toolbar.title("Hack-A-Lamp ");
-ui.toolbar.bgColor(55, 155, 155, 255);
+//ui.toolbar.bgColor(55, 155, 155, 150);
+//ui.toolbar.textColor("#000000");
+//ui.toolbar.bgColor(31,106,6,255); // dark green
+ui.toolbar.bgColor(0,0,0,255);
+ui.backgroundColor("#298A08"); // medium green
 ui.toolbar.show(true);
 //ui.screenMode("fullscreen");
 ui.screenOrientation("portrait");
@@ -19,6 +23,7 @@ var btStatus = false;
 var margin = 10;
 var w = ui.screenWidth - 2*margin;
 var h = 150;
+
 
 var btnConnect = ui.addButton("Connect to bluetooth", margin,0,w, h).onClick(function() {
     //if you want to use the Bluetooth Address, use 
@@ -54,24 +59,28 @@ function modifySliders(newRed,newGreen,newBlue){
     
     sendString = speed +","+ red +","+ green +","+ blue;
     string = red +","+ green +","+ blue;
-    colourDec.setText(string);
+    colorDec.setText(string);
     hexString = red.toString(16) + green.toString(16) + blue.toString(16);
     hexString = hexString.toUpperCase();
-    colourHex.setText(hexString);
+    colorHex.setText(hexString);
     
 }
 
 var redLabel = ui.addText("R",margin,2*h,w,w);
+redLabel.color("#000000");
 var sliderRed = ui.addSlider(margin, 2*h, w, 20, 0, 255).onChange(function(val) { 
     modifySliders(val,blue,green);
 });
 
+
 var greenLabel = ui.addText("G",margin,3*h,w,w);
+greenLabel.color("#000000");
 var sliderGreen = ui.addSlider(margin, 3*h, w, 20, 0, 255).onChange(function(val) { 
     modifySliders(red,val,blue);
 });
 
 var blueLabel = ui.addText("B",margin,4*h,w,w);
+blueLabel.color("#000000");
 var sliderBlue = ui.addSlider(margin, 4*h, w, 20, 0, 255).onChange(function(val) { 
     modifySliders(red,green,val);
 });
@@ -81,62 +90,6 @@ canvas.loopDraw(35, function() {
     canvas.fill(red,green,blue,10);
     canvas.rect(0, 0, ui.screenWidth, 500);
 });
-
-var colourDecLabel = ui.addText("Dec = ", margin, 9*h, 2*w, h);
-var colourDec = ui.addText(string,h, 9*h, 2*w, h);
-var colorHexLabel = ui.addText("Hex = ", margin, 9.5*h, 2*w, h);
-var colourHex = ui.addText(hexString,h, 9.5*h, 2*w, h);
-
-var speedCheckbox = ui.addCheckbox("High speed?",w-4.5*h,9*h,2*h,h, false).onChange(function(val) { 
-    if (val === true){
-        speed = 2;
-    }else{
-        speed = 25;
-    }
-});
-
-var IO = ui.addCheckbox("I/O",w-2.5*h,9*h,h,h, false).onChange(function(val) { 
-    if (val === true){
-        sliderRed.setValue(255);
-        sliderGreen.setValue(255);
-        sliderBlue.setValue(255);
-        sendString = speed +","+ red +","+ green +","+ blue;
-        string = red +","+ green +","+ blue;
-        colourDec.setText(string);
-        hexString = red.toString(16)+green.toString(16)+blue.toString(16);
-        hexString = hexString.toUpperCase();
-        colourHex.setText(hexString);
-        autoSend();
-    }else{
-        sliderRed.setValue(0);
-        sliderGreen.setValue(0);
-        sliderBlue.setValue(0);
-        sendString = speed +","+ red +","+ green +","+ blue;
-        string = red +","+ green +","+ blue;
-        colourDec.setText(string);
-        hexString = red.toString(16)+green.toString(16)+blue.toString(16);
-        hexString = hexString.toUpperCase();
-        colourHex.setText(hexString);   
-        autoSend();
-    }
-    
-});
-
-var sendFlag;
-var auto = ui.addCheckbox("Send?",w-1.5*h,9*h,2*h,h, false).onChange(function(val) { 
-    sendFlag = val;
-});
-
-function autoSend (){
-    if (sendFlag === true && btStatus === true){
-        btClient.send(sendString +"\n");
-        showToast = true;
-        console.log(sendString);
-    }else if(btStatus === false){
-        ui.toast("Not Connected");
-        sendFlag = false;
-    }
-}
 
 function randomInt(){
     var int = Math.random()*255;
@@ -153,12 +106,77 @@ var randomButton = ui.addButton("?",w-h,7.9*h,h,h).onClick(function(val) {
     sliderBlue.setValue(blue);
     sendString = speed +","+ red +","+ green +","+ blue;
     string = red +","+ green +","+ blue;
-    colourDec.setText(string);
+    colorDec.setText(string);
     hexString = red.toString(16)+green.toString(16)+blue.toString(16);
     hexString = hexString.toUpperCase();
-    colourHex.setText(hexString);   
+    colorHex.setText(hexString);   
     autoSend();
 }); 
+
+
+var colorDecLabel = ui.addText("Dec = ", margin, 9*h, 2*w, h);
+var colorDec = ui.addText(string,h, 9*h, 2*w, h);
+var colorHexLabel = ui.addText("Hex = ", margin, 9.5*h, 2*w, h);
+var colorHex = ui.addText(hexString,h, 9.5*h, 2*w, h);
+
+colorDecLabel.color("#000000");
+colorDec.color("#000000");
+colorHexLabel.color("#000000");
+colorHex.color("#000000");
+
+var speedCheckbox = ui.addCheckbox("High speed?",w-4.5*h,9*h,2*h,h, false).onChange(function(val) { 
+    if (val === true){
+        speed = 2;
+    }else{
+        speed = 25;
+    }
+});
+//speedCheckbox.color("#000000");
+
+var IO = ui.addCheckbox("I/O",w-2.5*h,9*h,h,h, false).onChange(function(val) { 
+    if (val === true){
+        sliderRed.setValue(255);
+        sliderGreen.setValue(255);
+        sliderBlue.setValue(255);
+        sendString = speed +","+ red +","+ green +","+ blue;
+        string = red +","+ green +","+ blue;
+        colorDec.setText(string);
+        hexString = red.toString(16)+green.toString(16)+blue.toString(16);
+        hexString = hexString.toUpperCase();
+        colorHex.setText(hexString);
+        autoSend();
+    }else{
+        sliderRed.setValue(0);
+        sliderGreen.setValue(0);
+        sliderBlue.setValue(0);
+        sendString = speed +","+ red +","+ green +","+ blue;
+        string = red +","+ green +","+ blue;
+        colorDec.setText(string);
+        hexString = red.toString(16)+green.toString(16)+blue.toString(16);
+        hexString = hexString.toUpperCase();
+        colorHex.setText(hexString);   
+        autoSend();
+    }
+    
+});
+//IO.color("#000000");
+
+var sendFlag;
+var auto = ui.addCheckbox("Send?",w-1.5*h,9*h,2*h,h, false).onChange(function(val) { 
+    sendFlag = val;
+});
+//auto.color("#000000");
+
+function autoSend (){
+    if (sendFlag === true && btStatus === true){
+        btClient.send(sendString +"\n");
+        showToast = true;
+        console.log(sendString);
+    }else if(btStatus === false){
+        ui.toast("Not Connected");
+        sendFlag = false;
+    }
+}
 
 var btnSend = ui.addButton("Send", margin, 10*h, w, h).onClick(function() {
     if (btStatus === true){

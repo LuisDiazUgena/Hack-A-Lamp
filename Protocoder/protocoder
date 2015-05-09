@@ -67,22 +67,33 @@ function modifySliders(newRed,newGreen,newBlue){
 }
 
 var redLabel = ui.addText("R",margin,2*h,w,w);
-redLabel.color("#000000");
+redLabel.color("#FFFFFF");
 var sliderRed = ui.addSlider(margin, 2*h, w, 20, 0, 255).onChange(function(val) { 
     modifySliders(val,blue,green);
 });
 
 
 var greenLabel = ui.addText("G",margin,3*h,w,w);
-greenLabel.color("#000000");
+greenLabel.color("#FFFFFF");
 var sliderGreen = ui.addSlider(margin, 3*h, w, 20, 0, 255).onChange(function(val) { 
     modifySliders(red,val,blue);
 });
 
 var blueLabel = ui.addText("B",margin,4*h,w,w);
-blueLabel.color("#000000");
+blueLabel.color("#FFFFFF");
 var sliderBlue = ui.addSlider(margin, 4*h, w, 20, 0, 255).onChange(function(val) { 
     modifySliders(red,green,val);
+});
+
+var whiteLabel = ui.addText("W",margin,5*h,w,w);
+whiteLabel.color("#FFFFFF");
+var sliderWhite = ui.addSlider(margin,5*h,w,20,0,255).onChange(function(val){
+    modifySliders(val,val,val);
+    
+    sliderRed.setValue(val);
+    sliderGreen.setValue(val);
+    sliderBlue.setValue(val);
+    
 });
 
 var canvas = ui.addCanvas(margin, 7.9*h, w-h-margin, h-margin);
